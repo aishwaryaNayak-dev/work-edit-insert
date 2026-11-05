@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+
+<body>
+
+    <h2>Student Registration</h2>
+
+    <form id="studentForm"
+          action="https://script.google.com/macros/s/AKfycbwprAWLEP_AGIUv7-76LuHqMWrqAuK8emg0gmANMS0VQoaUQWb_-jG3ZvOuX6zWXgXG/exec"
+          method="POST"
+          target="hidden_iframe">
+
+        <input type="text"
+               name="name"
+               placeholder="Enter Name"
+               required>
+        <br><br>
+
+        <input type="email"
+               name="email"
+               placeholder="Enter Email"
+               required>
+        <br><br>
+
+        <input type="tel"
+               name="phone"
+               placeholder="Enter Phone"
+               required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <iframe name="hidden_iframe"
+            id="hidden_iframe"
+            style="display:none;">
+    </iframe>
+
+    <p id="result"></p>
+
+    <script>
+
+        const form = document.getElementById("studentForm");
+        const iframe = document.getElementById("hidden_iframe");
+        const result = document.getElementById("result");
+
+        let submitted = false;
+
+        form.addEventListener("submit", function() {
+
+            submitted = true;
+            result.innerText = "Submitting...";
+
+        });
+
+        iframe.addEventListener("load", function() {
+
+            if (submitted) {
+
+                result.innerText = "Form submitted! Check Google Sheets.";
+
+                form.reset();
+                submitted = false;
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
